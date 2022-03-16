@@ -9,25 +9,31 @@ public class Complex {
 		this.im = im;
 	}
 
-	public static Complex valueOf(double re, double im){
-		return new Complex(re,im);
+	public static Complex valueOf(double re, double im) {
+		return new Complex(re, im);
 	}
 
-	public double realPart() { return re;}
-	public double imaginaryPart() { return im; }
+	public double realPart() {
+		return re;
+	}
 
-	public Complex plus(Complex c){
+	public double imaginaryPart() {
+		return im;
+	}
+
+	public Complex plus(Complex c) {
 		return new Complex(re + c.re, im + c.im);
 	}
 
-	public Complex minus(Complex c){
+	public Complex minus(Complex c) {
 		return new Complex(re - c.re, im - c.im);
 	}
 
-	public Complex times(Complex c){
+	public Complex times(Complex c) {
 		return new Complex(re * c.re, im * c.im);
 	}
-	public Complex divideBy(Complex c){
+
+	public Complex divideBy(Complex c) {
 		double tmp = c.re * c.re + c.im * c.im;
 		return new Complex((re * c.re + im * c.im) / tmp,
 			(im * c.re - re * c.im) / tmp);
@@ -40,10 +46,10 @@ public class Complex {
 
 	@Override
 	public boolean equals(Object o) {
-		if(o == this){
+		if (o == this) {
 			return true;
 		}
-		if(!(o instanceof Complex)) {
+		if (!(o instanceof Complex)) {
 			return false;
 		}
 		Complex c = (Complex)o;
@@ -53,6 +59,6 @@ public class Complex {
 
 	@Override
 	public String toString() {
-		return "(" + re + " + " + im + "i)" ;
+		return "(" + re + " + " + im + "i)";
 	}
 }
