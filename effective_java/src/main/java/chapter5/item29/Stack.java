@@ -15,17 +15,17 @@ public class Stack<E> {
 	// 따라서 타입 안전성을 보장하지만
 	// 이 배열의 런타임 타입은 E[] 가 아닌 Object[] 이다.
 	@SuppressWarnings("unchecked")
-	public Stack(){
-		elements = (E[]) new Object[DEFAULT_INITIAL_CAPACITY];
+	public Stack() {
+		elements = (E[])new Object[DEFAULT_INITIAL_CAPACITY];
 	}
 
-	public void push(E e){
+	public void push(E e) {
 		ensureCapacity();
 		elements[size++] = e;
 	}
 
 	public E pop() {
-		if(size == 0){
+		if (size == 0) {
 			throw new EmptyStackException();
 		}
 		E result = elements[--size];
@@ -33,9 +33,8 @@ public class Stack<E> {
 		return result;
 	}
 
-
-	private void ensureCapacity(){
-		if(elements.length == size){
+	private void ensureCapacity() {
+		if (elements.length == size) {
 			elements = Arrays.copyOf(elements, 2 * size + 1);
 		}
 	}
