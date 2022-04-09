@@ -23,18 +23,19 @@ public class CollectorsExample {
 		int collect1 = menu.stream().collect(summingInt(Dish::getCalories));
 
 		// 문자열 연결 !! 앞으로 StringBuilder를 사용하지 말고 collect(joining)을 하용하자 -> 내부적으로 StringBuilder를 사용하고 있음
-	String menu_names = menu.stream().map(Dish::getName).collect(joining(","));
+		String menu_names = menu.stream().map(Dish::getName).collect(joining(","));
 
-		Map<Dish.Type, List<Dish>> collect2 = menu.stream().collect(groupingBy(Dish::getType,filtering(dish -> dish.getCalories() > 500,toList())));
+		Map<Dish.Type, List<Dish>> collect2 = menu.stream()
+			.collect(groupingBy(Dish::getType, filtering(dish -> dish.getCalories() > 500, toList())));
 
 		menu.stream()
 			.collect(groupingBy(Dish::getType,
 				groupingBy(dish -> {
-					if(dish.getCalories() <= 400){
+					if (dish.getCalories() <= 400) {
 						return "DIET";
-					}else if ( dish.getCalories() <= 700){
+					} else if (dish.getCalories() <= 700) {
 						return "NORMAL";
-					}else{
+					} else {
 						return "FAT";
 					}
 				})));
