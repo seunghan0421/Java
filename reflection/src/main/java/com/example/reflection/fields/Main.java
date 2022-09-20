@@ -4,19 +4,30 @@ import java.lang.reflect.Field;
 
 public class Main {
 
-	public static void main(String[] args) {
-		printDeclaredFieldsInfo(Movie.MovieStats.class);
-		System.out.println("===============================");
-		printDeclaredFieldsInfo(Category.class);
+	public static void main(String[] args) throws IllegalAccessException, NoSuchFieldException {
+		// printDeclaredFieldsInfo(Movie.MovieStats.class);
+		// System.out.println("===============================");
+		// printDeclaredFieldsInfo(Category.class);
+
+		Movie lord_of_the_rings =
+			new Movie("Lord of the Rings", 2001, true, Category.ADVENTURE, 12.99);
+		printDeclaredFieldsInfo(lord_of_the_rings.getClass(), lord_of_the_rings);
+
+		Field minPriceStaticField = Movie.class.getDeclaredField("MINIMUM_PRICE");
+		// 정적 변수이기 때문에 정상적으로 출력된다.
+		System.out.println(String.format("static MINIMUM_PRICE value : %f", minPriceStaticField.get(null)));
+
+
 	}
 
-	public static void printDeclaredFieldsInfo(Class<?> clazz) {
+	public static <T> void printDeclaredFieldsInfo(Class<? extends T> clazz, T instance) throws IllegalAccessException {
 		for (Field field : clazz.getDeclaredFields()) {
 			System.out.println(String.format("Field name : %s type : %s",
 				field.getName(),
 				field.getType().getName()));
 
 			System.out.println(String.format("Is synthetic field : %s", field.isSynthetic()));
+			System.out.println(String.format("Field value is : %s", field.get(instance)));
 
 			System.out.println();
 		}
@@ -38,6 +49,7 @@ public class Main {
 			this.actualPrice = actualPrice;
 		}
 
+		// Non Static inner class
 		public class MovieStats {
 			private double timeWatched;
 
