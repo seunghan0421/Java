@@ -2,8 +2,8 @@ package com.example.reflection.fields.jsonwriter;
 
 import java.lang.reflect.Field;
 
-import com.example.reflection.fields.data.Address;
-import com.example.reflection.fields.data.Person;
+import com.example.reflection.fields.jsonwriter.data.Address;
+import com.example.reflection.fields.jsonwriter.data.Person;
 
 public class Main {
 

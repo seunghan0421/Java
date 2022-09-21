@@ -1,4 +1,4 @@
-package com.example.reflection.fields.data;
+package com.example.reflection.fields.jsonwriter.data;
 
 public class Address {
 	private final String street;
