@@ -26,5 +26,5 @@ package com.example.reflection.constructor.game;
 
 public interface Game {
 
-    void startGame();
+	void startGame();
 }

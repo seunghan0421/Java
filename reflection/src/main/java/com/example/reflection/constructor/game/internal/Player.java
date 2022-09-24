@@ -26,7 +26,7 @@ package com.example.reflection.constructor.game.internal;
 
 interface Player {
 
-    void play(Board board, Sign sign);
+	void play(Board board, Sign sign);
 
-    String getPlayerName();
+	String getPlayerName();
 }

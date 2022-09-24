@@ -25,17 +25,17 @@
 package com.example.reflection.constructor.game.internal;
 
 enum Sign {
-    EMPTY(' '),
-    X('X'),
-    Y('Y');
+	EMPTY(' '),
+	X('X'),
+	Y('Y');
 
-    private char value;
+	private char value;
 
-    Sign(char value) {
-        this.value = value;
-    }
+	Sign(char value) {
+		this.value = value;
+	}
 
-    public char getValue() {
-        return this.value;
-    }
+	public char getValue() {
+		return this.value;
+	}
 }

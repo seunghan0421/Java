@@ -25,5 +25,5 @@
 package com.example.reflection.constructor.game.internal;
 
 interface InputProvider {
-    BoardLocation provideNextMove(Board board);
+	BoardLocation provideNextMove(Board board);
 }
