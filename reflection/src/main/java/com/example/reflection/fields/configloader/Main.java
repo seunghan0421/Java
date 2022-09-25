@@ -1,5 +1,6 @@
 package com.example.reflection.fields.configloader;
 
+import java.lang.reflect.Array;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.nio.file.Path;
@@ -45,10 +46,30 @@ public class Main {
 			}
 
 			field.setAccessible(true);
-			Object parseValue = parseValue(field.getType(), propertyValue);
+
+			Object parseValue;
+			if(field.getType().isArray()){
+				parseValue = parseArray(field.getType().getComponentType(), propertyValue);
+			}else{
+				parseValue = parseValue(field.getType(), propertyValue);
+			}
+
 			field.set(configInstance, parseValue);
 		}
 		return configInstance;
+	}
+
+	private static Object parseArray(Class<?> arrayElementType, String value){
+		String[] elementValues = value.split(",");
+
+		Object arrayObject = Array.newInstance(arrayElementType, elementValues.length);
+
+		for (int i = 0; i < elementValues.length; ++i) {
+			Array.set(arrayObject, i, parseValue(arrayElementType, elementValues[i]));
+		}
+
+		return arrayObject;
+
 	}
 
 	private static Object parseValue(final Class<?> type, final String value) {
