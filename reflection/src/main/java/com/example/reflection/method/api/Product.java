@@ -23,4 +23,21 @@ public class Product {
 	public Date getExpirationDate() {
 		return expirationDate;
 	}
+
+	public void setPrice(final double price) {
+		this.price = price;
+	}
+
+	public void setName(final String name) {
+		this.name = name;
+	}
+
+	public void setQuantity(final long quantity) {
+		this.quantity = quantity;
+	}
+
+	public void setExpirationDate(final Date expirationDate) {
+		this.expirationDate = expirationDate;
+	}
+
 }

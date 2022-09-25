@@ -2,7 +2,11 @@ package com.example.reflection.method.test;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.example.reflection.method.api.Product;
@@ -11,10 +15,34 @@ public class ProductTest {
 
 	public static void main(String[] args) {
 		testGetters(Product.class);
+		testSetters(Product.class);
+	}
+
+	public static void testSetters(Class<?> dataClass) {
+		List<Field> fields = getAllFields(dataClass);
+
+		for (Field field : fields) {
+			String setterName = "set" + capitalizeFirstLetter(field.getName());
+
+			Method setterMethod = null;
+			try {
+				setterMethod = dataClass.getMethod(setterName, field.getType());
+			} catch (NoSuchMethodException e) {
+				throw new IllegalStateException(
+					String.format("Setter : %s not found", setterName)
+				);
+			}
+
+			if (!setterMethod.getReturnType().equals(void.class)) {
+				throw new IllegalStateException(
+					String.format("Setter method : %s has to return void", setterName)
+				);
+			}
+		}
 	}
 
 	public static void testGetters(Class<?> dataClass) {
-		Field[] fields = dataClass.getDeclaredFields();
+		List<Field> fields = getAllFields(dataClass);
 
 		Map<String, Method> methodNameToMethod = mapMethodNameToMethod(dataClass);
 
@@ -45,6 +73,23 @@ public class ProductTest {
 			}
 		}
 
+	}
+
+	// Field 뿐만 아니라 Method, Constructor에도 적용할 수 있는 강력한 알고리즘 - 기억해두기
+	private static List<Field> getAllFields(Class<?> clazz) {
+		if (clazz == null || clazz.equals(Object.class)) {
+			return Collections.emptyList();
+		}
+
+		Field[] curruentClassFields = clazz.getDeclaredFields();
+
+		List<Field> inheritedFields = getAllFields(clazz.getSuperclass());
+
+		List<Field> allFields = new ArrayList<>();
+		allFields.addAll(Arrays.asList(curruentClassFields));
+		allFields.addAll(inheritedFields);
+
+		return allFields;
 	}
 
 	private static String capitalizeFirstLetter(final String letter) {
