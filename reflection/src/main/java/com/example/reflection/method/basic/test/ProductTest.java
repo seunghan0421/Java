@@ -1,4 +1,4 @@
-package com.example.reflection.method.test;
+package com.example.reflection.method.basic.test;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.example.reflection.method.api.Product;
+import com.example.reflection.method.basic.api.Product;
 
 public class ProductTest {
 

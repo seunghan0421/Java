@@ -1,4 +1,4 @@
-package com.example.reflection.method.api;
+package com.example.reflection.method.basic.api;
 
 public class ClothingProduct extends Product{
 	private String color;
