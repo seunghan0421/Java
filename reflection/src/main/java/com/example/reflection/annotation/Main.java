@@ -13,28 +13,37 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import com.example.reflection.annotation.annotations.InitializeMethod;
 import com.example.reflection.annotation.annotations.InitializerClass;
+import com.example.reflection.annotation.annotations.RetryOperation;
+import com.example.reflection.annotation.annotations.ScanPackages;
 
 /**
  * 중요하게 봐야할 점
  * - Classes Discovery
  * - annotation 찾기
  */
+@ScanPackages({"app","app.configs","app.databases","app.http"})
 public class Main {
-	public static void main(String[] args) throws Exception {
-		initialize("main.java.com.example.reflection.annotation.http");
-
+	public static void main(String[] args) throws Throwable {
+		initialize();
 	}
 
-	public static void initialize(String... packageNames) throws Exception {
-		List<Class<?>> classes = getAllClasses(packageNames);
+	public static void initialize() throws Throwable {
+		// @ScanPackages에 입력되어 있는 패키지 찾
+		ScanPackages scanPackages = Main.class.getAnnotation(ScanPackages.class);
+
+		if(scanPackages == null || scanPackages.value().length == 0) {
+			return;
+		}
+
+		List<Class<?>> classes = getAllClasses(scanPackages.value());
 
 		for (Class<?> clazz : classes) {
 			if (!clazz.isAnnotationPresent(InitializerClass.class)) {
-				continue;
 			}
 
 			List<Method> methods = getAllInitializingMethods(clazz);
@@ -42,7 +51,34 @@ public class Main {
 			Object instance = clazz.getDeclaredConstructor().newInstance();
 
 			for (Method method : methods) {
+				callInitializingMethod(instance, method);
+			}
+		}
+	}
+
+	private static void callInitializingMethod(Object instance, Method method) throws Throwable {
+		RetryOperation retryOperation = method.getAnnotation(RetryOperation.class);
+
+		int numberOfRetries = retryOperation == null ? 0 : retryOperation.numberOfRetries();
+
+		while(true){
+			try{
 				method.invoke(instance);
+				break;
+			}catch (InvocationTargetException e){
+				Throwable targetException = e.getTargetException();
+
+				if (numberOfRetries > 0 && Set.of(retryOperation.retryException())
+					.contains(targetException.getClass())) {
+					numberOfRetries--;
+
+					System.out.println("Retrying...");
+					Thread.sleep(retryOperation.durationBetweenRetriesMs());
+				} else if (retryOperation != null) {
+					throw new Exception(retryOperation.failureMessage(), targetException);
+				}else{
+					throw targetException;
+				}
 			}
 		}
 	}
