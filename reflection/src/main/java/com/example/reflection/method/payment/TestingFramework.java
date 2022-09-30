@@ -4,6 +4,9 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Testing Framework
+ */
 public class TestingFramework {
 
 	public void runTestSuite(Class<?> testClass) throws Throwable {
