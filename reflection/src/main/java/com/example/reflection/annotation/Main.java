@@ -26,7 +26,7 @@ import com.example.reflection.annotation.annotations.ScanPackages;
  * - Classes Discovery
  * - annotation 찾기
  */
-@ScanPackages({"app","app.configs","app.databases","app.http"})
+@ScanPackages({"app", "app.configs", "app.databases", "app.http"})
 public class Main {
 	public static void main(String[] args) throws Throwable {
 		initialize();
@@ -36,7 +36,7 @@ public class Main {
 		// @ScanPackages에 입력되어 있는 패키지 찾
 		ScanPackages scanPackages = Main.class.getAnnotation(ScanPackages.class);
 
-		if(scanPackages == null || scanPackages.value().length == 0) {
+		if (scanPackages == null || scanPackages.value().length == 0) {
 			return;
 		}
 
@@ -61,11 +61,11 @@ public class Main {
 
 		int numberOfRetries = retryOperation == null ? 0 : retryOperation.numberOfRetries();
 
-		while(true){
-			try{
+		while (true) {
+			try {
 				method.invoke(instance);
 				break;
-			}catch (InvocationTargetException e){
+			} catch (InvocationTargetException e) {
 				Throwable targetException = e.getTargetException();
 
 				if (numberOfRetries > 0 && Set.of(retryOperation.retryException())
@@ -76,7 +76,7 @@ public class Main {
 					Thread.sleep(retryOperation.durationBetweenRetriesMs());
 				} else if (retryOperation != null) {
 					throw new Exception(retryOperation.failureMessage(), targetException);
-				}else{
+				} else {
 					throw targetException;
 				}
 			}
