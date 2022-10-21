@@ -111,7 +111,7 @@ public class Main {
 			} else if (componentType.equals(String.class)) {
 				stringBuilder.append(indent(indentSize + 1));
 				stringBuilder.append(formatStringValue((String)element));
-			}else{
+			} else {
 				stringBuilder.append(objectToJson(element, indentSize + 1));
 			}
 

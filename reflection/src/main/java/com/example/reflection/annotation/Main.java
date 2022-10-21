@@ -28,6 +28,7 @@ import com.example.reflection.annotation.annotations.ScanPackages;
  */
 @ScanPackages({"app", "app.configs", "app.databases", "app.http"})
 public class Main {
+
 	public static void main(String[] args) throws Throwable {
 		initialize();
 	}
