@@ -1,7 +1,9 @@
-package java8.stream;
+package java8.stream.util;
 
 import java.util.Arrays;
 import java.util.List;
+
+import java8.stream.domain.Dish;
 
 public final class DishUtil {
 

@@ -1,12 +1,12 @@
 package java8.stream.usage;
 
 import static java.util.stream.Collectors.*;
-import static java8.stream.DishUtil.*;
+import static java8.stream.util.DishUtil.*;
 
 import java.util.Arrays;
 import java.util.List;
 
-import java8.stream.Dish;
+import java8.stream.domain.Dish;
 
 public class Filtering {
 

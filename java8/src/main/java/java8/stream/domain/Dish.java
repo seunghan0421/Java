@@ -1,4 +1,4 @@
-package java8.stream;
+package java8.stream.domain;
 
 public class Dish {
 	private final String name;

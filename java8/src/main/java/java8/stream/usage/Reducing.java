@@ -1,6 +1,6 @@
 package java8.stream.usage;
 
-import static java8.stream.DishUtil.*;
+import static java8.stream.util.DishUtil.*;
 
 import java.util.Arrays;
 import java.util.Optional;

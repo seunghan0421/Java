@@ -1,10 +1,10 @@
 package java8.stream.usage;
 
-import static java8.stream.DishUtil.*;
+import static java8.stream.util.DishUtil.*;
 
 import java.util.Optional;
 
-import java8.stream.Dish;
+import java8.stream.domain.Dish;
 
 public class SearchOrMatch {
 
