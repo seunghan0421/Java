@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Test;
 
 class PracticeTest {
 
+	Practice practice = new Practice();
+
 	@Test
 	void P1Test() {
 		List<Integer> transactions = Practice.solution1();
@@ -21,7 +23,7 @@ class PracticeTest {
 		List<String> cities = Practice.solution2();
 
 		assertThat(cities).size().isEqualTo(2);
-		assertThat(cities).contains("Milan","Cambridge");
+		assertThat(cities).contains("Milan", "Cambridge");
 	}
 
 	@Test
@@ -29,7 +31,7 @@ class PracticeTest {
 		List<String> traderInCambridge = Practice.solution3();
 
 		assertThat(traderInCambridge).size().isEqualTo(3);
-		assertThat(traderInCambridge).contains("Alan","Brian", "Raoul");
+		assertThat(traderInCambridge).contains("Alan", "Brian", "Raoul");
 	}
 
 	@Test

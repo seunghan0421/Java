@@ -16,6 +16,7 @@ import java8.stream.domain.Transaction;
 	Transaction - trader, year, value
  */
 public class Practice {
+
 	// Q1. 2011년에 일어난 모든 트랜잭션을 찾아 값을 오름차순으로 정리하시오
 	public static List<Integer> solution1() {
 		return getTransactions().stream()
@@ -52,22 +53,21 @@ public class Practice {
 			.collect(toList());
 	}
 
-
 	// Q5. 밀라노에 거래자가 있는가?
 	public static boolean solution5() {
 		return getTransactions().stream()
 			.anyMatch(t -> t.getTrader().getCity().equals("Milan"));
 	}
 
-
 	// Q6. 케임브리지에서 거주하는 거래자의 모든 트랜잭션 값을 출력하시오.
-	public static void solution6(){
+	public static void solution6() {
 		getTransactions().stream()
 			.filter(t -> t.getTrader().getCity().equals("Cambridge"))
 			.map(Transaction::getValue)
 			.forEach(System.out::println);
 
 	}
+
 	// Q7. 전체 트랜잭션 중 최댓값은 얼마인가?
 	public static int solution7() {
 		return getTransactions().stream()
@@ -76,7 +76,6 @@ public class Practice {
 			.orElse(0);
 	}
 
-
 	// Q8. 전체 트랜잭션 중 최솟값은 얼마인가?
 	public static int solution8() {
 		return getTransactions().stream()
@@ -84,4 +83,5 @@ public class Practice {
 			.reduce(Integer::min)
 			.orElse(0);
 	}
+
 }
