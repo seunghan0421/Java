@@ -39,7 +39,7 @@ public class Grouping {
 			})
 		);
 
-		// 중요 잘 이해하기! 그룹화 된 항목을 조작
+		// 중요 잘 이해하기! 그룹화 된 항목을 조작 - 그룹화를 진행한 뒤 그 그룹화 진행한 데이터들에 조작
 		// filtering 메서드를 통해 각 그룹의 요소와 필터링 된 요소를 재그룹화
 		Map<Dish.Type, List<Dish>> caloricDishesByType = getDishes().stream()
 			.collect(groupingBy(Dish::getType, filtering(dish -> dish.getCalories() > 500, toList())));
