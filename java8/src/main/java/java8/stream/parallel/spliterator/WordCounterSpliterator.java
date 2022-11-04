@@ -24,7 +24,7 @@ public class WordCounterSpliterator implements Spliterator<Character> {
 			return null;
 		}
 		for (int splitPos = currentSize / 2 + currentChar; splitPos < string.length(); splitPos++) {
-			if(Character.isWhitespace(string.charAt(splitPos))){
+			if (Character.isWhitespace(string.charAt(splitPos))) {
 				Spliterator<Character> spliterator = new WordCounterSpliterator(
 					string.substring(currentChar, splitPos));
 				currentChar = splitPos;

@@ -9,15 +9,15 @@ public class WordCounter {
 		this.lastSpace = lastSpace;
 	}
 
-	public WordCounter accumulate(Character c){
-		if(Character.isWhitespace(c)){
+	public WordCounter accumulate(Character c) {
+		if (Character.isWhitespace(c)) {
 			return lastSpace ? this : new WordCounter(counter, true);
-		} else{
+		} else {
 			return lastSpace ? new WordCounter(counter + 1, false) : this;
 		}
 	}
 
-	public WordCounter combine(WordCounter wordCounter){
+	public WordCounter combine(WordCounter wordCounter) {
 		return new WordCounter(counter + wordCounter.counter, wordCounter.lastSpace);
 	}
 
