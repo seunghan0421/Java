@@ -1,5 +1,7 @@
 package java8.stream.dsl;
 
+import static java8.stream.dsl.methodchain.MethodChainingOrderBuilder.*;
+
 import java8.stream.dsl.domain.Order;
 import java8.stream.dsl.domain.Stock;
 import java8.stream.dsl.domain.Trade;
@@ -34,5 +36,19 @@ public class Main {
 		trade2.setPrice(375.00);
 		trade2.setQuantity(50);
 		order.addTrade(trade2);
+
+		// 메서드 체인 방식 dsl
+		forCustomer("BigBank")
+			.buy(80)
+			.stock("IBM")
+			.on("NYSE")
+			.at(125.00)
+			.sell(50)
+			.stock("GOOGLE")
+			.on("NASDAQ")
+			.at(375.00)
+			.end();
+
+
 	}
 }
