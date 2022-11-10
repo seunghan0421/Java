@@ -41,7 +41,7 @@ public class Trade {
 		this.price = price;
 	}
 
-	public double getValue(){
+	public double getValue() {
 		return quantity * price;
 	}
 }

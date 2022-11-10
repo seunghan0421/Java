@@ -7,7 +7,7 @@ public class MethodChainingOrderBuilder {
 
 	public final Order order = new Order();
 
-	private MethodChainingOrderBuilder(String customer){
+	private MethodChainingOrderBuilder(String customer) {
 		order.setCustomer(customer);
 	}
 
@@ -19,11 +19,11 @@ public class MethodChainingOrderBuilder {
 		return new TradeBuilder(this, Trade.Type.BUY, quantity);
 	}
 
-	public TradeBuilder sell(int quantity){
+	public TradeBuilder sell(int quantity) {
 		return new TradeBuilder(this, Trade.Type.SELL, quantity);
 	}
 
-	public MethodChainingOrderBuilder addTrade(Trade trade){
+	public MethodChainingOrderBuilder addTrade(Trade trade) {
 		order.addTrade(trade);
 		return this;
 	}

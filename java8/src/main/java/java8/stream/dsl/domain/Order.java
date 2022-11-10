@@ -16,11 +16,11 @@ public class Order {
 		this.customer = customer;
 	}
 
-	public void addTrade(Trade trade){
+	public void addTrade(Trade trade) {
 		trades.add(trade);
 	}
 
-	public double getValue(){
+	public double getValue() {
 		return trades.stream().mapToDouble(Trade::getValue).sum();
 	}
 }

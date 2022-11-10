@@ -11,7 +11,7 @@ public class TradeBuilderWithStock {
 		this.trade = trade;
 	}
 
-	public MethodChainingOrderBuilder at(double price){
+	public MethodChainingOrderBuilder at(double price) {
 		trade.setPrice(price);
 		return builder.addTrade(trade);
 	}

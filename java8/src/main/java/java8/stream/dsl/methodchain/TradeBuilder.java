@@ -6,7 +6,7 @@ public class TradeBuilder {
 	private final MethodChainingOrderBuilder builder;
 	private final Trade trade = new Trade();
 
-	private TradeBuilder(MethodChainingOrderBuilder builder, Trade.Type type, int quantity){
+	public TradeBuilder(MethodChainingOrderBuilder builder, Trade.Type type, int quantity){
 		this.builder = builder;
 		trade.setType(type);
 		trade.setQuantity(quantity);
