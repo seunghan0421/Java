@@ -1,6 +1,7 @@
 package java8.stream.dsl;
 
 import static java8.stream.dsl.methodchain.MethodChainingOrderBuilder.*;
+import static java8.stream.dsl.nestedfunction.NestedFunctionOrderBuilder.*;
 
 import java8.stream.dsl.domain.Order;
 import java8.stream.dsl.domain.Stock;
@@ -48,6 +49,11 @@ public class Main {
 			.on("NASDAQ")
 			.at(375.00)
 			.end();
+
+		// 중첩된 함수 dsl
+		// order("BigBank",
+		// 	buy(80, stock("IBM", on("NYSE")), at(125.00))),
+		// 	sell(50, stock("GOOGLE", on("NASDAQ")), at(375.00));
 
 
 	}
