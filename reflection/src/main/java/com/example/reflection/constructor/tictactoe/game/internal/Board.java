@@ -22,7 +22,7 @@
  *  SOFTWARE.
  */
 
-package com.example.reflection.constructor.game.internal;
+package com.example.reflection.constructor.tictactoe.game.internal;
 
 class Board {
 	private Cell[][] cells;

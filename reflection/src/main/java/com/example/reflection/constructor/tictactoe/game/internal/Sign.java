@@ -22,9 +22,20 @@
  *  SOFTWARE.
  */
 
-package com.example.reflection.constructor.game;
+package com.example.reflection.constructor.tictactoe.game.internal;
 
-public interface Game {
+enum Sign {
+	EMPTY(' '),
+	X('X'),
+	Y('Y');
 
-	void startGame();
+	private char value;
+
+	Sign(char value) {
+		this.value = value;
+	}
+
+	public char getValue() {
+		return this.value;
+	}
 }

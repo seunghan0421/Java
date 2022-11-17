@@ -22,24 +22,22 @@
  *  SOFTWARE.
  */
 
-package com.example.reflection.constructor.game.internal;
+package com.example.reflection.constructor.tictactoe.game.internal;
 
-class ComputerPlayer implements Player {
-	private static final String NAME = "Computer";
-	private final ComputerInputProvider locationProvider;
+class BoardLocation {
+	private int row;
+	private int column;
 
-	public ComputerPlayer(ComputerInputProvider locationProvider) {
-		this.locationProvider = locationProvider;
+	public BoardLocation(int row, int column) {
+		this.row = row;
+		this.column = column;
 	}
 
-	@Override
-	public void play(Board board, Sign sign) {
-		BoardLocation location = locationProvider.provideNextMove(board);
-		board.updateCell(location.getRow(), location.getColumn(), sign);
+	public int getRow() {
+		return row;
 	}
 
-	@Override
-	public String getPlayerName() {
-		return NAME;
+	public int getColumn() {
+		return column;
 	}
 }

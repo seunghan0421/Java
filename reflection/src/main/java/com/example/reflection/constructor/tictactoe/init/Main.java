@@ -22,15 +22,15 @@
  *  SOFTWARE.
  */
 
-package com.example.reflection.constructor.init;
+package com.example.reflection.constructor.tictactoe.init;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.example.reflection.constructor.game.Game;
-import com.example.reflection.constructor.game.internal.TicTacToeGame;
+import com.example.reflection.constructor.tictactoe.game.Game;
+import com.example.reflection.constructor.tictactoe.game.internal.TicTacToeGame;
 
 public class Main {
 
@@ -53,7 +53,7 @@ public class Main {
 		for (Class<?> argumentType : constructor.getParameterTypes()) {
 			Object argumentValue = createObjectRecursively(argumentType);
 			constructorArguments.add(argumentValue);
-		}
+		}ㅋ
 
 		constructor.setAccessible(true);
 		return (T)constructor.newInstance(constructorArguments.toArray());

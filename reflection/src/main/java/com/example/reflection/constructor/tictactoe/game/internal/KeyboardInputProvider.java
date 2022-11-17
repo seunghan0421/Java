@@ -22,20 +22,32 @@
  *  SOFTWARE.
  */
 
-package com.example.reflection.constructor.game.internal;
+package com.example.reflection.constructor.tictactoe.game.internal;
 
-enum Sign {
-	EMPTY(' '),
-	X('X'),
-	Y('Y');
+import java.util.Scanner;
 
-	private char value;
+class KeyboardInputProvider implements InputProvider {
+	private final Scanner scanner = new Scanner(System.in);
+	private final BoardDimensions boardDimensions;
 
-	Sign(char value) {
-		this.value = value;
+	public KeyboardInputProvider(BoardDimensions boardDimensions) {
+		this.boardDimensions = boardDimensions;
 	}
 
-	public char getValue() {
-		return this.value;
+	@Override
+	public BoardLocation provideNextMove(Board board) {
+		int row;
+		int column;
+		do {
+			System.out.print("Please choose row: ");
+			row = scanner.nextInt();
+			System.out.print("Please choose column: ");
+			column = scanner.nextInt();
+		} while (row < 0
+			|| row >= boardDimensions.getNumberOfRows()
+			|| column < 0
+			|| column >= boardDimensions.getNumberOfColumns()
+			|| !board.isCellEmpty(row, column));
+		return new BoardLocation(row, column);
 	}
 }

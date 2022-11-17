@@ -22,22 +22,8 @@
  *  SOFTWARE.
  */
 
-package com.example.reflection.constructor.game.internal;
+package com.example.reflection.constructor.tictactoe.game.internal;
 
-class BoardLocation {
-	private int row;
-	private int column;
-
-	public BoardLocation(int row, int column) {
-		this.row = row;
-		this.column = column;
-	}
-
-	public int getRow() {
-		return row;
-	}
-
-	public int getColumn() {
-		return column;
-	}
+interface InputProvider {
+	BoardLocation provideNextMove(Board board);
 }

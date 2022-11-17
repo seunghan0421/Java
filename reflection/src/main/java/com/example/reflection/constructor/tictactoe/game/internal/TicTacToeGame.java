@@ -22,13 +22,13 @@
  *  SOFTWARE.
  */
 
-package com.example.reflection.constructor.game.internal;
+package com.example.reflection.constructor.tictactoe.game.internal;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-import com.example.reflection.constructor.game.Game;
+import com.example.reflection.constructor.tictactoe.game.Game;
 
 public class TicTacToeGame implements Game {
 	private static final int NUMBER_OF_PLAYERS = 2;

@@ -22,24 +22,17 @@
  *  SOFTWARE.
  */
 
-package com.example.reflection.constructor.game.internal;
+package com.example.reflection.constructor.tictactoe.game.internal;
 
-class HumanPlayer implements Player {
-	private static final String NAME = "You";
-	private final KeyboardInputProvider inputProvider;
+class BoardDimensions {
+	private static final int NUM_OF_ROWS = 3;
+	private static final int NUM_OF_COLUMNS = 3;
 
-	public HumanPlayer(KeyboardInputProvider inputProvider) {
-		this.inputProvider = inputProvider;
+	public int getNumberOfRows() {
+		return NUM_OF_ROWS;
 	}
 
-	@Override
-	public void play(Board board, Sign sign) {
-		BoardLocation nextMoveLocation = inputProvider.provideNextMove(board);
-		board.updateCell(nextMoveLocation.getRow(), nextMoveLocation.getColumn(), sign);
-	}
-
-	@Override
-	public String getPlayerName() {
-		return NAME;
+	public int getNumberOfColumns() {
+		return NUM_OF_COLUMNS;
 	}
 }

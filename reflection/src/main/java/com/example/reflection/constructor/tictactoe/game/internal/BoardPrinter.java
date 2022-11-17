@@ -22,24 +22,37 @@
  *  SOFTWARE.
  */
 
-package com.example.reflection.constructor.game.internal;
+package com.example.reflection.constructor.tictactoe.game.internal;
 
-class Cell {
-	private Sign sign;
+class BoardPrinter {
+	private final BoardDimensions dimensions;
 
-	public Cell() {
-		sign = Sign.EMPTY;
+	public BoardPrinter(BoardDimensions dimensions) {
+		this.dimensions = dimensions;
 	}
 
-	public boolean isEmpty() {
-		return sign == Sign.EMPTY;
+	public void print(Board board) {
+		printHorizontalBorder();
+
+		printBoard(board);
+
+		printHorizontalBorder();
 	}
 
-	public Sign getSign() {
-		return sign;
+	private void printBoard(Board board) {
+		for (int r = 0; r < dimensions.getNumberOfRows(); r++) {
+			System.out.print("|");
+			for (int c = 0; c < dimensions.getNumberOfColumns(); c++) {
+				System.out.print(String.format(" %s |", board.getPrintableCellSign(r, c)));
+			}
+			System.out.println();
+		}
 	}
 
-	public void setSign(Sign sign) {
-		this.sign = sign;
+	private void printHorizontalBorder() {
+		for (int c = 0; c < dimensions.getNumberOfColumns() * 4 + 1; c++) {
+			System.out.print("-");
+		}
+		System.out.println();
 	}
 }

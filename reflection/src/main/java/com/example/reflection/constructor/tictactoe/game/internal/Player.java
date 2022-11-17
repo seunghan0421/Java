@@ -22,8 +22,11 @@
  *  SOFTWARE.
  */
 
-package com.example.reflection.constructor.game.internal;
+package com.example.reflection.constructor.tictactoe.game.internal;
 
-interface InputProvider {
-	BoardLocation provideNextMove(Board board);
+interface Player {
+
+	void play(Board board, Sign sign);
+
+	String getPlayerName();
 }
