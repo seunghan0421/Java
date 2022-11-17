@@ -53,7 +53,7 @@ public class Main {
 		for (Class<?> argumentType : constructor.getParameterTypes()) {
 			Object argumentValue = createObjectRecursively(argumentType);
 			constructorArguments.add(argumentValue);
-		}ㅋ
+		}
 
 		constructor.setAccessible(true);
 		return (T)constructor.newInstance(constructorArguments.toArray());
