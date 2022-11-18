@@ -37,10 +37,10 @@ Getter를 작성하는 과정 자체가 반복되기 때문에 작은 실수(오
     - Class.getDeclaredMethod(String name, Class<?> … paramTypes) - looks for a method only in the current class
 - if a method with the name and parameter types(in that order) is not found a NoSuchMethodException is thrown
 
-
 ## Method Parameter Names
 
-- Just like Constructor parameter names, Method parameter names are erased after compliation - 컴파일을 진행하고 나면 생성자와 메서드의 매개변수 이름은 지워진다!! 주의
+- Just like Constructor parameter names, Method parameter names are erased after compliation - 컴파일을 진행하고 나면 생성자와 메서드의
+  매개변수 이름은 지워진다!! 주의
 - Method.getParameters() - Provides additional information about a method’s parameters
 - The parameter names are replaced with “arg0”, “arg1”…
 
@@ -50,12 +50,14 @@ Getter를 작성하는 과정 자체가 반복되기 때문에 작은 실수(오
 - We can call a method of a Java Object using the Method.invoke(Object instance, Object …args) operation
     - instance - The object we are interested in invoking the method
     - if the method is static we can pass nul as the instance - 메서드가 static이면 instance null 가능
-    - args - arguments to the method. Must be of the correct type and order as the method’s signature - 매개변수는 정확한 유형과 순서여야 한다.
+    - args - arguments to the method. Must be of the correct type and order as the method’s signature - 매개변수는 정확한 유형과
+      순서여야 한다.
 
 Object Method.invoke(Object instance, Object …args)
 
 - if the return type of the method is void, invoke(..) will return null
-- if the return type is a primitive type(int, boolean, float, long, double, etc…). The return value is wrapped in an object.
+- if the return type is a primitive type(int, boolean, float, long, double, etc…). The return value is wrapped in an
+  object.
     - int value is returned as an Integer object.. etc
 
 Method.invoke(..) can throw:
@@ -74,7 +76,6 @@ Method.invoke(..) can throw:
 
     </aside>
 
-
 ## Method Invocation with Reflection - Use cases
 
 Reflection을 활용한 주요 메서드 호출 사용 사례
@@ -89,7 +90,8 @@ are decoupled from the logic that controls the execution of those methods
 
 메서드 이름, 시그니처, 반환 유형, 심지어 메서드를 포함한 클래스가 메서드를 실행하는 로직에서 분리될 때?
 
-- Typically the order of execution is either not important or unknown at compile time - 실행 시간은 중요하지 않거나 컴파일 타임으로 알 수 없다>?
+- Typically the order of execution is either not important or unknown at compile time - 실행 시간은 중요하지 않거나 컴파일 타임으로 알 수 없다>
+  ?
 - Method invocation using Reflection is one of the most widely used features of Java Reflection
 - Can be found in many stack traces of libraries and frameworks, used on a daily basis
 

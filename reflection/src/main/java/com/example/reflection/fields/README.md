@@ -96,7 +96,6 @@ Java Compiler generates artificial fields for internal usage
 
   → Enum의 특징과 연결시켜 잘 이해해 보자
 
-
 ## Fields use cases
 
 - Using the Field class we were able to get a class’s field
@@ -132,7 +131,8 @@ Java Compiler generates artificial fields for internal usage
 
 ### java.lang.reflect.Array Class
 
-- Given an array object, we can use the Reflection to access the array object’s runtime properties and data - Reflection을 사용해 런타임 값과 데이터에 접근 가능
+- Given an array object, we can use the Reflection to access the array object’s runtime properties and data -
+  Reflection을 사용해 런타임 값과 데이터에 접근 가능
 - Array class contains static methods that help us get that data from an array object - 메서드 제공?
 - Example
     - Array.getLength(Object arrayObject) - get array’s length
@@ -145,12 +145,12 @@ Java Compiler generates artificial fields for internal usage
 ## Setting Field Values
 
 ```java
-public <T> void setFieldValue(T instance) {
-	Class<T> clazz = instance.getClass();
-	Field field = clazz.getDeclaredField("fieldName");
+public<T> void setFieldValue(T instance){
+	Class<T> clazz=instance.getClass();
+	Field field=clazz.getDeclaredField("fieldName");
 	field.setAccessible(true);
 	field.set(instance,value); // value must be right type
-}
+	}
 ```
 
 ## Use cases for setting field values with Reflection
@@ -161,7 +161,8 @@ used with unknown ahead of time(instance)
 
 ## Use case - Object Deserializers
 
-- Take data in a predefined protocol and translate into a Java Object represetnation (Plain Old Java Object) - 미리 정의된 프로토콜에서 데이터를 가져와 Java 언어로 변경해준다.
+- Take data in a predefined protocol and translate into a Java Object represetnation (Plain Old Java Object) - 미리 정의된
+  프로토콜에서 데이터를 가져와 Java 언어로 변경해준다.
 - Examples
     - Network Protocol Deserializers (Json Converter)
     - Object Relational Mapping Software
@@ -189,13 +190,13 @@ Reflection을 사용한 객체의 final 필드 설정은 권장하지 않고 예
 → 따라서 런타임에 이름을 유지하는 필드를 사용하는 게 작업에 있어서 더 좋은 옵션이 된다.
 
 ```java
-public class GameConfig{
+public class GameConfig {
 	private int releaseYear;
 	private String gameName;
 	private String company;
-	
-// (int releaseYear, String gameName, String company)
-	public GameConfig(int arg0, String arg1, String arg2){ 
+
+	// (int releaseYear, String gameName, String company)
+	public GameConfig(int arg0, String arg1, String arg2) {
 		this.releaseYear = arg0;
 		this.gameName = arg1;
 		this.company = arg3;

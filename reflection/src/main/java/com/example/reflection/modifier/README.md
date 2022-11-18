@@ -16,7 +16,6 @@
 
       [Modifier (Java Platform SE 8 )](https://docs.oracle.com/javase/8/docs/api/javax/lang/model/element/Modifier.html)
 
-
 ## Modifiers Discovery with getModifiers()
 
 - Class.getModifiers() - Returns Class Modifiers
@@ -24,7 +23,7 @@
 - Method.getModifiers() - Returns Method modifiers
 - Field.getModifiers() - Returns Field modifiers
 
-Modifiers are packed in an integer value -  제어자는 정수 변수에 묶인다? - 중요
+Modifiers are packed in an integer value - 제어자는 정수 변수에 묶인다? - 중요
 
 ## ## Bitmap Encoding of Modifiers
 
@@ -43,16 +42,17 @@ PUBLIC | STATIC = 9. Binary representation : …. 0000 1001
 
 ## Modifier Helper Class
 
-- To help us work with those bitmaps, Reflection comes with the modifier class that contains bit masks for all the modifiers - 모든 제어자를 위한 비트마스크를 포함하고 있는 제어자 헬퍼 클래스가 딸려 있다.
+- To help us work with those bitmaps, Reflection comes with the modifier class that contains bit masks for all the
+  modifiers - 모든 제어자를 위한 비트마스크를 포함하고 있는 제어자 헬퍼 클래스가 딸려 있다.
 
 ### Example
 
 ```java
-int modifiers = Product.class.getModifiers();
+int modifiers=Product.class.getModifiers();
 
-if((modifiers & Modifier.ABSTRACT) != 0){
+	if((modifiers&Modifier.ABSTRACT)!=0){
 	System.out.println("Product is an abstract class");
-}
+	}
 ```
 
 - Modifier class also provides us with static helper methods that perform those bitmask operations for us
