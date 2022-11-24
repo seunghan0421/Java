@@ -50,10 +50,6 @@ public class Main {
 			.at(375.00)
 			.end();
 
-		// 중첩된 함수 dsl - 사용하기 어렵다.
-		// order("BigBank",
-		// 	buy(80, stock("IBM", on("NYSE")), at(125.00))),
-		// 	sell(50, stock("GOOGLE", on("NASDAQ")), at(375.00));
 
 
 	}
